@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contato</title>
+  <link rel="stylesheet" href="css/style.css.ccs" />
+</head>
+<body>
+  <header>
+    <h1>Entre em Contato Conosco</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="conceitos.html">Conceitos</a>
+      <a href="equipamentos.html">Lista de Fornecedores</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+  <main>
+    <form id="form-contato">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="assunto">Assunto:</label>
+      <input type="text" id="assunto" name="assunto" required />
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" required minlength="20"></textarea>
+
+      <button type="submit">Enviar</button>
+      <p id="feedback" role="alert" aria-live="polite"></p>
+    </form>
+
+    <section class="linkedin-section" aria-label="Link para LinkedIn da Laura Martinson Vaz" style="margin-top: 20px;">
+      <p>Conecte-se comigo no LinkedIn: <a href="https://www.linkedin.com/in/laura-martinson-vaz-9043251a3" target="_blank" rel="noopener noreferrer">Laura Martinson Vaz</a></p>
+    </section>
+
+    <script src="js/script.js"></script>
+  </main>
+</body>
+</html>

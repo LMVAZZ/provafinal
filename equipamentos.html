@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contato</title>
+  <link rel="stylesheet" href="css/style.css.css" />
+  <style>
+    /* Menu básico */
+    nav {
+      background-color: #004080;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    /* Feedback */
+    #feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    /* Form simples */
+    form label {
+      display: block;
+      margin-top: 15px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+    form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    form button:hover {
+      background-color: #003366;
+    }
+    /* LinkedIn */
+    .linkedin-section {
+      margin-top: 25px;
+      font-size: 1rem;
+    }
+    .linkedin-section a {
+      color: #004080;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .linkedin-section a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Entre em Contato Conosco</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="conceitos.html">Conceitos</a>
+      <a href="equipamentos.html">Equipamentos</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="form-contato" novalidate>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="assunto">Assunto:</label>
+      <input type="text" id="assunto" name="assunto" required />
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" required minlength="20"></textarea>
+
+      <button type="submit">Enviar</button>
+      <p id="feedback" role="alert" aria-live="polite"></p>
+    </form>
+
+    <section class="linkedin-section" aria-label="Link para LinkedIn da Laura Martinson Vaz">
+      <p>Conecte-se comigo no LinkedIn: <a href="https://www.linkedin.com/in/laura-martinson-vaz-9043251a3" target="_blank" rel="noopener noreferrer">Laura Martinson Vaz</a></p>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("form-contato");
+      const feedback = document.getElementById("feedback");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Captura valores dos inputs pelo name
+        const nome = form.nome.value.trim();
+        const email = form.email.value.trim();
+        const assunto = form.assunto.value.trim();
+        const mensagem = form.mensagem.value.trim();
+
+        // Regex simples para validar e-mail
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Validação
+        if (!nome || !email || !assunto || !mensagem) {
+          feedback.textContent = "Por favor, preencha todos os campos.";
+          feedback.style.color = "red";
+          return;
+        }
+
+        if (!emailRegex.test(email)) {
+          feedback.textContent = "Por favor, insira um e-mail válido.";
+          feedback.style.color = "red";
+          return;
+        }
+
+        if (mensagem.length < 20) {
+          feedback.textContent = "A mensagem deve conter pelo menos 20 caracteres.";
+          feedback.style.color = "red";
+          return;
+        }
+
+        // Sucesso
+        feedback.textContent = "Mensagem enviada com sucesso! Obrigada pelo contato.";
+        feedback.style.color = "green";
+
+        form.reset();
+      });
+    });
+  </script>
+</body>
+</html>
